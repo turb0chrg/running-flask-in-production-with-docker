@@ -1,0 +1,14 @@
+services:
+  flask_hello:
+    image: flask_image
+    restart: unless-stopped
+    expose:
+      - 80
+    env_file:
+      - .env
+    networks:
+      - nginx-proxy_frontend-insecure
+
+networks:
+  nginx-proxy_frontend-insecure:
+    external: true
